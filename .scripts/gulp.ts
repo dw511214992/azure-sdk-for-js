@@ -13,7 +13,7 @@ import { getPackageInformationFromPackageJsons, PackageInfo } from "./packages";
 import { findReadmeTypeScriptMdFilePaths, getAbsolutePackageFolderPathFromReadmeFileContents, getPackageNamesFromReadmeTypeScriptMdFileContents } from "./readme";
 import { NPMViewResult, NPMScope } from "@ts-common/azure-js-dev-tools";
 import { Changelog, generateChangelogAndBumpVersion } from "js-sdk-changelog-tool";
-import { getChangedPackageDirectory } from "./git";
+import { getChangedPackageDirectory, getLastCommitId } from "./git";
 const _logger = Logger.get();
 
 function containsPackageName(packageNames: string[], packageName: string): boolean {
@@ -98,40 +98,43 @@ interface OutputPackageInfo {
     result: string;
 }
 
-export async function automationGenerate(azureSDKForJSRepoRoot: string, inputJsonPath: string, outputJsonPath: string, use?: string, useDebugger?: boolean) {
+export async function automationGenerateInPipeline(azureSDKForJSRepoRoot: string, inputJsonPath: string, outputJsonPath: string, use?: string, useDebugger?: boolean) {
     const inputJson = JSON.parse(fs.readFileSync(inputJsonPath, {encoding: 'utf-8'}));
     const specFolder: string = inputJson['specFolder'];
     const readmeFiles: string[] = inputJson['relatedReadmeMdFiles'];
+    const gitCommitId: string = inputJson['headSha'];
+    const repoHttpsUrl: string = inputJson['repoHttpsUrl'];
     const packages: OutputPackageInfo[] = [];
     const outputJson = {
         packages: packages
     };
     for (const readmeMd of readmeFiles) {
-        const outputPackageInfo: OutputPackageInfo = {
-            "packageName": "",
-            "path": [
-            ],
-            "readmeMd": [
-              readmeMd
-            ],
-            "changelog": {
-                "content": "",
-                "hasBreakingChange": false
-            },
-            "artifacts": [],
-            "result": "succeeded"
-        };
-        await generateSdkAndChangelogAndBumpVersion(azureSDKForJSRepoRoot, path.join(specFolder, readmeMd), readmeMd, use, useDebugger, outputJson);
-        outputJson.packages.push(outputPackageInfo);
+        await generateSdkAutomatically(azureSDKForJSRepoRoot, path.join(specFolder, readmeMd), readmeMd, gitCommitId, undefined, use, useDebugger, outputJson, repoHttpsUrl);
     }
 
     fs.writeFileSync(outputJsonPath, JSON.stringify(outputJson, undefined, '  '), {encoding: 'utf-8'})
 }
 
-export async function generateSdkAndChangelogAndBumpVersion(azureSDKForJSRepoRoot: string, absoluteReadmeMd: string, relativeReadmeMd: string, use?: string, useDebugger?: boolean, outputJson?: any) {
+export async function automationGenerateInLocal(azureSDKForJSRepoRoot: string, absoluteReadmeMd: string, tag?: string, use?: string, useDebugger?: boolean) {
+    const regexResult = /^(.*\/azure-rest-api-specs)\/(specification.*)/.exec(absoluteReadmeMd);
+    if (!regexResult || regexResult.length !== 3) {
+        _logger.logError(`Cannot Parse readme file path: ${absoluteReadmeMd}`);
+    } else {
+        const gitCommitId = await getLastCommitId(regexResult[1]);
+        const relativeReadmeMd = regexResult[2];
+        await generateSdkAutomatically(azureSDKForJSRepoRoot, absoluteReadmeMd, relativeReadmeMd, gitCommitId, tag, use, useDebugger);
+    }
+}
+
+export async function generateSdkAutomatically(azureSDKForJSRepoRoot: string, absoluteReadmeMd: string, relativeReadmeMd: string, gitCommitId: string, tag?: string, use?: string, useDebugger?: boolean, outputJson?: any, swaggerRepoUrl?: string) {
     _logger.log(`>>>>>>>>>>>>>>>>>>> Start: "${absoluteReadmeMd}" >>>>>>>>>>>>>>>>>>>>>>>>>`);
 
     let cmd = `autorest --version=V2 --typescript --typescript-sdks-folder=${azureSDKForJSRepoRoot} --license-header=MICROSOFT_MIT_NO_VERSION ${absoluteReadmeMd}`;
+
+    if (tag) {
+        cmd += ` --tag=${tag}`;
+    }
+
     if (use) {
         cmd += ` --use=${use}`;
     } else {
@@ -193,6 +196,19 @@ export async function generateSdkAndChangelogAndBumpVersion(azureSDKForJSRepoRoo
                             }
                         }
                     }
+                    const metaInfo: any = {
+                        commit: gitCommitId,
+                        readme: relativeReadmeMd,
+                        autorest_command: cmd,
+                        repository_url: swaggerRepoUrl? `${swaggerRepoUrl}.git` : 'https://github.com/Azure/azure-rest-api-specs.git'
+                    };
+                    if (tag) {
+                        metaInfo['tag'] = tag;
+                    }
+                    if (use) {
+                        metaInfo['use'] = use;
+                    }
+                    fs.writeFileSync(path.join(packageFolderPath, '_meta.json'), JSON.stringify(metaInfo, undefined, '  '), {encoding: 'utf-8'});
                 } else {
                     throw 'find undefined packageFolderPath'
                 }
@@ -201,7 +217,9 @@ export async function generateSdkAndChangelogAndBumpVersion(azureSDKForJSRepoRoo
                 _logger.log(`An error occurred while generating client for readme file: "${absoluteReadmeMd}":\nErr: ${e}\nStderr: "${e.stderr}"`);
                 outputPackageInfo.result = 'failed';
             } finally {
-                outputJson.packages.push(outputPackageInfo);
+                if (outputJson) {
+                    outputJson.packages.push(outputPackageInfo);
+                }
             }
         }
     } catch (err) {
