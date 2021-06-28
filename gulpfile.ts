@@ -11,7 +11,7 @@ import * as path from "path";
 import PluginError from "plugin-error";
 import { Argv, CommandLineOptions, getCommandLineOptions } from "./.scripts/commandLine";
 import { endsWith, getPackageFolderPaths, packagesToIgnore } from "./.scripts/common";
-import { generateSdk, setAutoPublish, setVersion } from "./.scripts/gulp";
+import { automationGenerateInLocal, automationGenerateInPipeline, generateSdk, setAutoPublish, setVersion } from "./.scripts/gulp";
 import { Logger } from "./.scripts/logger";
 import { findMissingSdks } from "./.scripts/packages";
 import { getPackageFolderPathFromPackageArgument } from "./.scripts/readme";
@@ -77,6 +77,22 @@ gulp.task('default', async () => {
   _logger.log('    Root location of autorest.typescript repository. If this is not specified, then the latest installed generator for TypeScript will be used.');
   _logger.log('  --package');
   _logger.log('    NPM package to regenerate. If no package is specified, then all packages will be regenerated.');
+  _logger.log();
+  _logger.log('gulp automation_generate_in_local [--use <autorest.typescript root>] [--readme <readme name>]');
+  _logger.log('  --use');
+  _logger.log('    Root location of autorest.typescript repository. If this is not specified, then the latest installed generator for TypeScript will be used.');
+  _logger.log('  --readme');
+  _logger.log('    readme file path.');
+  _logger.log('  --tag');
+  _logger.log('    tag used in generating codes.');
+  _logger.log();
+  _logger.log('gulp automation_generate_in_pipeline [--use <autorest.typescript root>] [--inputJson <inputJson name>] [--outputJson <outputJson name>]');
+  _logger.log('  --use');
+  _logger.log('    Root location of autorest.typescript repository. If this is not specified, then the latest installed generator for TypeScript will be used.');
+  _logger.log('  --inputJson');
+  _logger.log('    input.json provided by swagger pipeline.');
+  _logger.log('  --outputJson');
+  _logger.log('    output.json provided by swagger pipeline.');
   _logger.log();
   _logger.log('gulp pack [--package <package name>] [--whatif] [--to-pack <to-pack option>] [--drop <drop folder path>]');
   _logger.log('  --package');
@@ -148,6 +164,80 @@ gulp.task('codegen', async () => {
       .argv as any;
 
   await generateSdk(argv.azureRestAPISpecsRoot, argv.azureSDKForJSRepoRoot, argv.package, argv.use, argv.debugger);
+});
+
+// This task is used to generate libraries, changelog and bump version based on the mappings specified above.
+gulp.task('automation_generate_in_local', async () => {
+  interface CodegenOptions {
+    debugger: boolean | undefined;
+    use: string | undefined;
+    tag: string | undefined;
+    readme: string
+  }
+
+  _logger.log(`Passed arguments: ${Argv.print()}`);
+  const argv: (CodegenOptions & Argv.RepositoryOptions)
+    = Argv.construct(Argv.Options.Repository)
+      .options({
+        "debugger": {
+          boolean: true,
+          alias: ["d", "use-debugger"],
+          description: "Enables debugger attaching to autorest.typescript process"
+        },
+        "use": {
+          string: true,
+          description: "Specifies location for the generator to use"
+        },
+        "tag": {
+          string: true,
+          description: "Specifies tag for the generator to use"
+        },
+        "readme": {
+          string: true,
+          description: "Specifies location of readme.md fpr the generator to use"
+        }
+      })
+      .usage("Example: gulp automation_generate_in_local --readmeMd ../azure-rest-api-specs/specification/cdn/something/readme.md")
+      .argv as any;
+
+  await automationGenerateInLocal(argv.azureSDKForJSRepoRoot, argv.readme, argv.tag, argv.use, argv.debugger);
+});
+
+// This task is used in swagger pipeline.
+gulp.task('automation_generate_in_pipeline', async () => {
+  interface CodegenOptions {
+    debugger: boolean | undefined;
+    use: string | undefined;
+    inputJson: string;
+    outputJson: string;
+  }
+
+  _logger.log(`Passed arguments: ${Argv.print()}`);
+  const argv: (CodegenOptions & Argv.RepositoryOptions)
+    = Argv.construct(Argv.Options.Repository)
+    .options({
+      "debugger": {
+        boolean: true,
+        alias: ["d", "use-debugger"],
+        description: "Enables debugger attaching to autorest.typescript process"
+      },
+      "use": {
+        string: true,
+        description: "Specifies location for the generator to use"
+      },
+      "inputJson": {
+        string: true,
+        description: "input.json provided by swagger pipeline"
+      },
+      "outputJson": {
+        string: true,
+        description: "output.json provided by swagger pipeline"
+      }
+    })
+    .usage("Example: gulp automation_generate_in_pipeline --inputJson input.json --outputJson output.json")
+    .argv as any;
+
+  await automationGenerateInPipeline(argv.azureSDKForJSRepoRoot, argv.inputJson, argv.outputJson, argv.use, argv.debugger);
 });
 
 function pack(): void {
