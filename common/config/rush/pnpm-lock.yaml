@@ -91,6 +91,7 @@ specifiers:
   '@rush-temp/identity-cache-persistence': file:./projects/identity-cache-persistence.tgz
   '@rush-temp/identity-vscode': file:./projects/identity-vscode.tgz
   '@rush-temp/iot-device-update': file:./projects/iot-device-update.tgz
+  '@rush-temp/iot-device-update-1': file:./projects/iot-device-update-1.tgz
   '@rush-temp/iot-modelsrepository': file:./projects/iot-modelsrepository.tgz
   '@rush-temp/keyvault-admin': file:./projects/keyvault-admin.tgz
   '@rush-temp/keyvault-certificates': file:./projects/keyvault-certificates.tgz
@@ -244,6 +245,7 @@ dependencies:
   '@rush-temp/identity-cache-persistence': file:projects/identity-cache-persistence.tgz
   '@rush-temp/identity-vscode': file:projects/identity-vscode.tgz
   '@rush-temp/iot-device-update': file:projects/iot-device-update.tgz
+  '@rush-temp/iot-device-update-1': file:projects/iot-device-update-1.tgz
   '@rush-temp/iot-modelsrepository': file:projects/iot-modelsrepository.tgz
   '@rush-temp/keyvault-admin': file:projects/keyvault-admin.tgz
   '@rush-temp/keyvault-certificates': file:projects/keyvault-certificates.tgz
@@ -1579,7 +1581,6 @@ packages:
   /@opentelemetry/node/0.22.0_@opentelemetry+api@1.0.3:
     resolution: {integrity: sha512-+HhGbDruQ7cwejVOIYyxRa28uosnG8W95NiQZ6qE8PXXPsDSyGeftAPbtYpGit0H2f5hrVcMlwmWHeAo9xkSLA==}
     engines: {node: '>=8.0.0'}
-    deprecated: Package renamed to @opentelemetry/sdk-trace-node
     peerDependencies:
       '@opentelemetry/api': ^1.0.0
     dependencies:
@@ -11373,9 +11374,9 @@ packages:
       - utf-8-validate
     dev: false
 
-  file:projects/iot-device-update.tgz:
-    resolution: {integrity: sha512-6LBsYH/eIaBvoej21Y8fBf3ZTBcjRgs18Ltet8id34p+o9URtBOPBpsgQPidpUhen9aSyY/8yUXIxTPXSkeoxg==, tarball: file:projects/iot-device-update.tgz}
-    name: '@rush-temp/iot-device-update'
+  file:projects/iot-device-update-1.tgz:
+    resolution: {integrity: sha512-IuMLBEVTu8xEjUiNKwG6CG04LMLi5YcQUhl4uDx51bHFUS9UZPijROsx0xlbU1xNxxD5dcgYzYM1+rbkzz4bnA==, tarball: file:projects/iot-device-update-1.tgz}
+    name: '@rush-temp/iot-device-update-1'
     version: 0.0.0
     dependencies:
       '@azure/core-tracing': 1.0.0-preview.13
@@ -11397,6 +11398,56 @@ packages:
       uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  file:projects/iot-device-update.tgz:
+    resolution: {integrity: sha512-PwZjcMkxRXX6zTQr40v/m3xrbyhqmHRujSxz+QqwcdAAZv63CPYgQAlsqo/loYMOPqg/HRs279H82QY1U+1u5w==, tarball: file:projects/iot-device-update.tgz}
+    name: '@rush-temp/iot-device-update'
+    version: 0.0.0
+    dependencies:
+      '@azure-rest/core-client': 1.0.0-beta.7
+      '@azure/core-tracing': 1.0.0-preview.13
+      '@microsoft/api-extractor': 7.18.19
+      '@types/chai': 4.2.22
+      '@types/mocha': 7.0.2
+      '@types/node': 12.20.37
+      '@types/uuid': 8.3.1
+      chai: 4.3.4
+      cross-env: 7.0.3
+      dotenv: 8.6.0
+      eslint: 7.32.0
+      karma: 6.3.8
+      karma-chrome-launcher: 3.1.0
+      karma-coverage: 2.0.3
+      karma-edge-launcher: 0.4.2_karma@6.3.8
+      karma-env-preprocessor: 0.1.1
+      karma-firefox-launcher: 1.3.0
+      karma-ie-launcher: 1.0.0_karma@6.3.8
+      karma-json-preprocessor: 0.3.3_karma@6.3.8
+      karma-json-to-file-reporter: 1.0.1
+      karma-junit-reporter: 2.0.1_karma@6.3.8
+      karma-mocha: 2.0.1
+      karma-mocha-reporter: 2.2.5_karma@6.3.8
+      karma-source-map-support: 1.4.0
+      karma-sourcemap-loader: 0.3.8
+      mkdirp: 1.0.4
+      mocha: 7.2.0
+      mocha-junit-reporter: 1.23.3_mocha@7.2.0
+      nyc: 14.1.1
+      prettier: 2.2.1
+      rimraf: 3.0.2
+      rollup: 1.32.1
+      source-map-support: 0.5.20
+      tslib: 2.3.1
+      typedoc: 0.15.2
+      typescript: 4.2.4
+      uglify-js: 3.14.3
+      uuid: 8.3.2
+    transitivePeerDependencies:
+      - bufferutil
+      - debug
+      - supports-color
+      - utf-8-validate
     dev: false
 
   file:projects/iot-modelsrepository.tgz:
@@ -12585,7 +12636,7 @@ packages:
     dev: false
 
   file:projects/schema-registry-avro.tgz:
-    resolution: {integrity: sha512-iRbvRW1AI8qOZY+dkzisvXFgybYssX9NgChAuqaGV8dltHQaY46PCBwNYepCjB1GbFfVqz4bl4CKtvZ6zhogXQ==, tarball: file:projects/schema-registry-avro.tgz}
+    resolution: {integrity: sha512-es1wTz4ESP2fxE8Wky3jiVQdorQHXzokj57HKP5pNkP4WnDy+0p20f6dQZAgH1abgNsYYha8yK+vK/i2txJ+AQ==, tarball: file:projects/schema-registry-avro.tgz}
     name: '@rush-temp/schema-registry-avro'
     version: 0.0.0
     dependencies:
