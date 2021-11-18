@@ -10,7 +10,7 @@ import { env, Recorder, record, RecorderEnvironmentSetup } from "@azure-tools/te
 import "./env";
 import { ClientOptions } from "@azure-rest/core-client";
 import DeviceUpdate, { DeviceUpdateRestClient } from "../../../src";
-import { AzureCliCredential } from "@azure/identity";
+import { ClientSecretCredential } from "@azure/identity";
 
 const replaceableVariables: { [k: string]: string } = {
   ENDPOINT: "https://endpoint",
@@ -37,7 +37,11 @@ export const environmentSetup: RecorderEnvironmentSetup = {
 }
 
 export function createClient(options?: ClientOptions): DeviceUpdateRestClient {
-  const credential = new AzureCliCredential();
+  const credential = new ClientSecretCredential(
+    env.AZURE_TENANT_ID,
+    env.AZURE_CLIENT_ID,
+    env.AZURE_CLIENT_SECRET
+  );
   return DeviceUpdate(env.ENDPOINT, credential, options);
 }
 

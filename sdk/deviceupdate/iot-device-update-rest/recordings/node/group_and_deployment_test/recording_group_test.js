@@ -1,6 +1,6 @@
 let nock = require('nock');
 
-module.exports.hash = "1ef4181d85db1c9be18e15a081d4c812";
+module.exports.hash = "7c95c142407c285c7a1e79a23bca4eee";
 
 module.exports.testInfo = {"uniqueName":{},"newDate":{}}
 
@@ -23,19 +23,19 @@ nock('https://login.microsoftonline.com:443', {"encodedQueryParams":true})
   'P3P',
   'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'x-ms-request-id',
-  'bc78f6b1-702b-4a43-bc9d-0ca26fa50300',
+  '3e1d96a1-42b4-472f-9ad0-43d2db110200',
   'x-ms-ests-server',
   '2.1.12231.8 - KRSLR1 ProdSlices',
   'Set-Cookie',
-  'fpc=AhNUzFZ4_YJCtV00hGsuIwo; expires=Sat, 18-Dec-2021 07:42:03 GMT; path=/; secure; HttpOnly; SameSite=None',
+  'fpc=Avv5XTF0nhlCvthKmQOG3J4; expires=Sat, 18-Dec-2021 07:42:04 GMT; path=/; secure; HttpOnly; SameSite=None',
   'Set-Cookie',
-  'esctx=AQABAAAAAAD--DLA3VO7QrddgJg7Wevr22PWV6CYkzz_HBmpaZnEEnLdYUKYg_3COUn5WhqIe54Yp5POmH9IwqoDSQ9qd9GELG6A1Qgv_P11CEOIE2jPTEmXrzebpdV2AiH0XPw3D7tZkranZwJ7JocdduGSxQtizMim_IPi70aQRzn7sElL7NdWFcHUMiHhg0eC6mAAAFcgAA; domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None',
+  'esctx=AQABAAAAAAD--DLA3VO7QrddgJg7WevrDQlO_ScRuXC9cyG_0xxdiFcbvYjb75L3KFWDxb5GOG2m6kp75Xy6A7SQHNtC345nB_SQJNNZA1PBDZGqFpq4ce_KxzjvACLHDyITlxFZPCd929KjeNJP1L1-oeY8aApwQx2T_5Q9mFyh1jkLondCB3nXOxaeELlKd9TM8csZhw8gAA; domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None',
   'Set-Cookie',
   'x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly',
   'Set-Cookie',
   'stsservicecookie=estsfd; path=/; secure; samesite=none; httponly',
   'Date',
-  'Thu, 18 Nov 2021 07:42:03 GMT',
+  'Thu, 18 Nov 2021 07:42:04 GMT',
   'Content-Length',
   '980'
 ]);
@@ -58,25 +58,25 @@ nock('https://login.microsoftonline.com:443', {"encodedQueryParams":true})
   'P3P',
   'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'x-ms-request-id',
-  'c9ccbb6c-d5e5-433f-ab91-989897800300',
+  'd2d0a0fd-aa12-4284-8cd0-f42ba6540200',
   'x-ms-ests-server',
   '2.1.12231.8 - SEASLR1 ProdSlices',
   'Set-Cookie',
-  'fpc=AiiTq0OYDDRPuANAZr8GDpI; expires=Sat, 18-Dec-2021 07:42:03 GMT; path=/; secure; HttpOnly; SameSite=None',
+  'fpc=Ar5BgnTG3mdJqoMq96TXNTc; expires=Sat, 18-Dec-2021 07:42:04 GMT; path=/; secure; HttpOnly; SameSite=None',
   'Set-Cookie',
-  'esctx=AQABAAAAAAD--DLA3VO7QrddgJg7Wevrcfa6XXy8jC_0CpYNHqSIHuIuT8KwsokTlxmVaTIw8Fuaoujbm3YUTv3r__-0-GlXicJIh-vgOQHMXL-k12uVgcnsX5jZzupAX8tG32TvqnmrQ1NHkZ_hdk5_-RDrEX9VPaIgFJoGEtshMWEFOwmrF0e8Dboz8WRBFO24ny8PYJAgAA; domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None',
+  'esctx=AQABAAAAAAD--DLA3VO7QrddgJg7WevrjKMxcllCHWLCvrmsdfh4LEgRt0o2RFzAXaL0jUqUiJbHTnzAo0U6-7_l0sf12XFvdU32c5CAkjM7jccILETjtQ8tx1g8t31Z3ib7PgYBIVPNG2EkgegejerdesYnBPCTQd0ScALVDdzXtgX-Oq3wN4GblyyGWfF3kAeUnHQ1H0AgAA; domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None',
   'Set-Cookie',
   'x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly',
   'Set-Cookie',
   'stsservicecookie=estsfd; path=/; secure; samesite=none; httponly',
   'Date',
-  'Thu, 18 Nov 2021 07:42:03 GMT',
+  'Thu, 18 Nov 2021 07:42:04 GMT',
   'Content-Length',
   '1753'
 ]);
 
 nock('https://login.microsoftonline.com:443', {"encodedQueryParams":true})
-  .post('/88888888-8888-8888-8888-888888888888/oauth2/v2.0/token', "client_id=azure_client_id&scope=https%3A%2F%2Fsanitized%2F&grant_type=client_credentials&x-client-SKU=msal.js.node&x-client-VER=1.3.3&x-client-OS=win32&x-client-CPU=x64&x-ms-lib-capability=retry-after, h429&x-client-current-telemetry=5|771,2,,,|,&x-client-last-telemetry=5|0|||0,0&client-request-id=981247ee-a48a-4907-803d-2b1c01099a3d&client_secret=azure_client_secret&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22cp1%22%5D%7D%7D%7D")
+  .post('/88888888-8888-8888-8888-888888888888/oauth2/v2.0/token', "client_id=azure_client_id&scope=https%3A%2F%2Fsanitized%2F&grant_type=client_credentials&x-client-SKU=msal.js.node&x-client-VER=1.3.3&x-client-OS=win32&x-client-CPU=x64&x-ms-lib-capability=retry-after, h429&x-client-current-telemetry=5|771,2,,,|,&x-client-last-telemetry=5|0|||0,0&client-request-id=12cdf212-07a4-48ec-a6ab-31ab38fcee40&client_secret=azure_client_secret&claims=%7B%22access_token%22%3A%7B%22xms_cc%22%3A%7B%22values%22%3A%5B%22cp1%22%5D%7D%7D%7D")
   .reply(200, {"token_type":"Bearer","expires_in":86399,"ext_expires_in":86399,"access_token":"access_token"}, [
   'Cache-Control',
   'no-store, no-cache',
@@ -93,33 +93,71 @@ nock('https://login.microsoftonline.com:443', {"encodedQueryParams":true})
   'P3P',
   'CP="DSP CUR OTPi IND OTRi ONL FIN"',
   'x-ms-request-id',
-  '3e1d96a1-42b4-472f-9ad0-43d2d3110200',
+  '29e57e81-63ab-4a29-9694-50f0c4340200',
   'x-ms-ests-server',
-  '2.1.12231.8 - KRSLR1 ProdSlices',
+  '2.1.12231.8 - SEASLR2 ProdSlices',
   'x-ms-clitelem',
   '1,0,0,,',
   'Set-Cookie',
-  'fpc=AnUnAg_lukJJntaquBaZcjTzixNsAQAAAMv6J9kOAAAA; expires=Sat, 18-Dec-2021 07:42:03 GMT; path=/; secure; HttpOnly; SameSite=None',
+  'fpc=As7TRpm-lSNKpxMl5Q5l8OLzixNsAQAAAMz6J9kOAAAA; expires=Sat, 18-Dec-2021 07:42:04 GMT; path=/; secure; HttpOnly; SameSite=None',
   'Set-Cookie',
   'x-ms-gateway-slice=estsfd; path=/; secure; samesite=none; httponly',
   'Set-Cookie',
   'stsservicecookie=estsfd; path=/; secure; samesite=none; httponly',
   'Date',
-  'Thu, 18 Nov 2021 07:42:03 GMT',
+  'Thu, 18 Nov 2021 07:42:04 GMT',
   'Content-Length',
-  '1722'
+  '1701'
 ]);
 
 nock('https://https%3A%2F%2Fendpoint', {"encodedQueryParams":true})
-  .get('/deviceupdate/sdkinstance/management/devicetags')
+  .get('/deviceupdate/sdkinstance/management/groups')
   .query(true)
-  .reply(200, {"value":[{"tagName":"joegroup","deviceCount":1}]}, [
+  .reply(200, {"value":[{"deploymentId":"test20211117112017","groupId":"testgroup","tags":["testgroup"],"createdDateTime":"2021-11-16T00:49:25.141+00:00","groupType":"DeviceClassIdAndIoTHubTag","deviceCount":2,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"},{"groupId":"Invalidtestgroup","tags":["testgroup"],"createdDateTime":"2021-11-16T00:49:25.141+00:00","groupType":"InvalidDeviceClassIdAndIoTHubTag","deviceCount":0,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"},{"deploymentId":"test1118014304","groupId":"dpokluda-edgevm","tags":["dpokluda-edgevm"],"createdDateTime":"2021-11-17T22:57:28.78+00:00","groupType":"DeviceClassIdAndIoTHubTag","deviceCount":1,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"},{"groupId":"Invaliddpokluda-edgevm","tags":["dpokluda-edgevm"],"createdDateTime":"2021-11-17T22:57:28.78+00:00","groupType":"InvalidDeviceClassIdAndIoTHubTag","deviceCount":0,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"}]}, [
   'Date',
-  'Thu, 18 Nov 2021 07:42:03 GMT',
+  'Thu, 18 Nov 2021 07:42:04 GMT',
   'Content-Type',
   'application/json; charset=utf-8',
   'Content-Length',
-  '50',
+  '1334',
   'traceparent',
-  '00-6da6b5488f35e64c8470849afb69077c-9c737e66ec4b3342-00'
+  '00-5b18830b312b7245aac3af422c0010fa-7a6074046b2c754e-00'
+]);
+
+nock('https://https%3A%2F%2Fendpoint', {"encodedQueryParams":true})
+  .put('/deviceupdate/sdkinstance/management/groups/joegroup', {"groupId":"joegroup","tags":["joegroup"],"createdDateTime":"2021-11-17T16:29:56.5770502+00:00","groupType":"DeviceClassIdAndIoTHubTag","deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"})
+  .query(true)
+  .reply(200, {"groupId":"joegroup","tags":["joegroup"],"createdDateTime":"2021-11-17T16:29:56.5770502+00:00","groupType":"DeviceClassIdAndIoTHubTag","deviceCount":1,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"}, [
+  'Date',
+  'Thu, 18 Nov 2021 07:42:05 GMT',
+  'Content-Type',
+  'application/json; charset=utf-8',
+  'Content-Length',
+  '253',
+  'traceparent',
+  '00-e5fab65d25bd0548882b34d504a93114-83b3b83e5f00144f-00'
+]);
+
+nock('https://https%3A%2F%2Fendpoint', {"encodedQueryParams":true})
+  .get('/deviceupdate/sdkinstance/management/groups/joegroup')
+  .query(true)
+  .reply(200, {"groupId":"joegroup","tags":["joegroup"],"createdDateTime":"2021-11-17T16:29:56.5770502+00:00","groupType":"DeviceClassIdAndIoTHubTag","deviceCount":1,"deviceClassId":"0919e3ae422a2bfa8c84ff905813e60351e456d1"}, [
+  'Date',
+  'Thu, 18 Nov 2021 07:42:05 GMT',
+  'Content-Type',
+  'application/json; charset=utf-8',
+  'Content-Length',
+  '253',
+  'traceparent',
+  '00-e788000ec0d0174cbac82503e2194377-6a6c3320c2cafd46-00'
+]);
+
+nock('https://https%3A%2F%2Fendpoint', {"encodedQueryParams":true})
+  .delete('/deviceupdate/sdkinstance/management/groups/joegroup')
+  .query(true)
+  .reply(204, "", [
+  'Date',
+  'Thu, 18 Nov 2021 07:42:05 GMT',
+  'traceparent',
+  '00-f60fe9d67e132042acf3736f10df6260-f43cab3b2ac2b345-00'
 ]);

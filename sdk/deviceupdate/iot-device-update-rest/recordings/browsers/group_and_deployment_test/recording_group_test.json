@@ -1,0 +1,95 @@
+{
+ "recordings": [
+  {
+   "method": "POST",
+   "url": "https://login.microsoftonline.com/88888888-8888-8888-8888-888888888888/oauth2/v2.0/token",
+   "query": {},
+   "requestBody": "response_type=token&grant_type=client_credentials&client_id=azure_client_id&client_secret=XgL7Q%7E38LJVM5F1j_6nk2RDERroE90uI%7EnfrZ&scope=https%3A%2F%2Fsanitized%2F",
+   "status": 200,
+   "response": "{\"token_type\":\"Bearer\",\"expires_in\":86399,\"ext_expires_in\":86399,\"access_token\":\"access_token\"}",
+   "responseHeaders": {
+    "cache-control": "no-store, no-cache",
+    "content-length": "1679",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:19 GMT",
+    "expires": "-1",
+    "nel": "{\"report_to\":\"network-errors\",\"max_age\":86400,\"success_fraction\":0.001,\"failure_fraction\":1.0}",
+    "p3p": "CP=\"DSP CUR OTPi IND OTRi ONL FIN\"",
+    "pragma": "no-cache",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "report-to": "{\"group\":\"network-errors\",\"max_age\":86400,\"endpoints\":[{\"url\":\"https://identity.nel.measure.office.net/api/report?catId=GW+estsfd+krc\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "x-ms-ests-server": "2.1.12231.8 - SEASLR1 ProdSlices",
+    "x-ms-request-id": "5c5530ba-b054-42e6-b0d4-8cb94b0b0400"
+   }
+  },
+  {
+   "method": "GET",
+   "url": "https://https%3A%2F%2Fendpoint/deviceupdate/sdkinstance/management/groups",
+   "query": {
+    "api-version": "2021-06-01-preview"
+   },
+   "requestBody": null,
+   "status": 200,
+   "response": "{\r\n  \"value\": [\r\n    {\r\n      \"deploymentId\": \"test20211117112017\",\r\n      \"groupId\": \"testgroup\",\r\n      \"tags\": [\r\n        \"testgroup\"\r\n      ],\r\n      \"createdDateTime\": \"2021-11-16T00:49:25.141+00:00\",\r\n      \"groupType\": \"DeviceClassIdAndIoTHubTag\",\r\n      \"deviceCount\": 2,\r\n      \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n    },\r\n    {\r\n      \"groupId\": \"Invalidtestgroup\",\r\n      \"tags\": [\r\n        \"testgroup\"\r\n      ],\r\n      \"createdDateTime\": \"2021-11-16T00:49:25.141+00:00\",\r\n      \"groupType\": \"InvalidDeviceClassIdAndIoTHubTag\",\r\n      \"deviceCount\": 0,\r\n      \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n    },\r\n    {\r\n      \"deploymentId\": \"test1118014304\",\r\n      \"groupId\": \"dpokluda-edgevm\",\r\n      \"tags\": [\r\n        \"dpokluda-edgevm\"\r\n      ],\r\n      \"createdDateTime\": \"2021-11-17T22:57:28.78+00:00\",\r\n      \"groupType\": \"DeviceClassIdAndIoTHubTag\",\r\n      \"deviceCount\": 1,\r\n      \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n    },\r\n    {\r\n      \"groupId\": \"Invaliddpokluda-edgevm\",\r\n      \"tags\": [\r\n        \"dpokluda-edgevm\"\r\n      ],\r\n      \"createdDateTime\": \"2021-11-17T22:57:28.78+00:00\",\r\n      \"groupType\": \"InvalidDeviceClassIdAndIoTHubTag\",\r\n      \"deviceCount\": 0,\r\n      \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n    }\r\n  ]\r\n}",
+   "responseHeaders": {
+    "content-length": "1334",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:19 GMT",
+    "traceparent": "00-518c04fb6b9b6341adb954fc855d1bf2-4323fecd3fb0ef4a-00"
+   }
+  },
+  {
+   "method": "PUT",
+   "url": "https://https%3A%2F%2Fendpoint/deviceupdate/sdkinstance/management/groups/joegroup",
+   "query": {
+    "api-version": "2021-06-01-preview"
+   },
+   "requestBody": "{\"groupId\":\"joegroup\",\"tags\":[\"joegroup\"],\"createdDateTime\":\"2021-11-17T16:29:56.5770502+00:00\",\"groupType\":\"DeviceClassIdAndIoTHubTag\",\"deviceClassId\":\"0919e3ae422a2bfa8c84ff905813e60351e456d1\"}",
+   "status": 200,
+   "response": "{\r\n  \"groupId\": \"joegroup\",\r\n  \"tags\": [\r\n    \"joegroup\"\r\n  ],\r\n  \"createdDateTime\": \"2021-11-17T16:29:56.5770502+00:00\",\r\n  \"groupType\": \"DeviceClassIdAndIoTHubTag\",\r\n  \"deviceCount\": 1,\r\n  \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n}",
+   "responseHeaders": {
+    "content-length": "253",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:20 GMT",
+    "traceparent": "00-289be2fbb216c04fb7244405ea9bb6d7-57b9fafb5de6e34c-00"
+   }
+  },
+  {
+   "method": "GET",
+   "url": "https://https%3A%2F%2Fendpoint/deviceupdate/sdkinstance/management/groups/joegroup",
+   "query": {
+    "api-version": "2021-06-01-preview"
+   },
+   "requestBody": null,
+   "status": 200,
+   "response": "{\r\n  \"groupId\": \"joegroup\",\r\n  \"tags\": [\r\n    \"joegroup\"\r\n  ],\r\n  \"createdDateTime\": \"2021-11-17T16:29:56.5770502+00:00\",\r\n  \"groupType\": \"DeviceClassIdAndIoTHubTag\",\r\n  \"deviceCount\": 1,\r\n  \"deviceClassId\": \"0919e3ae422a2bfa8c84ff905813e60351e456d1\"\r\n}",
+   "responseHeaders": {
+    "content-length": "253",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:20 GMT",
+    "traceparent": "00-1b473694e4d5a04a9fdbc01d164bac8b-70d73638b523e340-00"
+   }
+  },
+  {
+   "method": "DELETE",
+   "url": "https://https%3A%2F%2Fendpoint/deviceupdate/sdkinstance/management/groups/joegroup",
+   "query": {
+    "api-version": "2021-06-01-preview"
+   },
+   "requestBody": null,
+   "status": 204,
+   "response": "",
+   "responseHeaders": {
+    "date": "Thu, 18 Nov 2021 07:42:20 GMT",
+    "traceparent": "00-a5ed4e2a3dc577468f0eed9bb0406901-4c65198116f45f44-00"
+   }
+  }
+ ],
+ "uniqueTestInfo": {
+  "uniqueName": {},
+  "newDate": {}
+ },
+ "hash": "1e157566b1c22b3fe4cc555a57a1f8a0"
+}

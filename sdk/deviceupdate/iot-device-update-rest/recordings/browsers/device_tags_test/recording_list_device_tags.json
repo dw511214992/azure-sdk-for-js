@@ -1,0 +1,49 @@
+{
+ "recordings": [
+  {
+   "method": "POST",
+   "url": "https://login.microsoftonline.com/88888888-8888-8888-8888-888888888888/oauth2/v2.0/token",
+   "query": {},
+   "requestBody": "response_type=token&grant_type=client_credentials&client_id=azure_client_id&client_secret=XgL7Q%7E38LJVM5F1j_6nk2RDERroE90uI%7EnfrZ&scope=https%3A%2F%2Fsanitized%2F",
+   "status": 200,
+   "response": "{\"token_type\":\"Bearer\",\"expires_in\":86399,\"ext_expires_in\":86399,\"access_token\":\"access_token\"}",
+   "responseHeaders": {
+    "cache-control": "no-store, no-cache",
+    "content-length": "1679",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:18 GMT",
+    "expires": "-1",
+    "nel": "{\"report_to\":\"network-errors\",\"max_age\":86400,\"success_fraction\":0.001,\"failure_fraction\":1.0}",
+    "p3p": "CP=\"DSP CUR OTPi IND OTRi ONL FIN\"",
+    "pragma": "no-cache",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "report-to": "{\"group\":\"network-errors\",\"max_age\":86400,\"endpoints\":[{\"url\":\"https://identity.nel.measure.office.net/api/report?catId=GW+estsfd+krc\"}]}",
+    "strict-transport-security": "max-age=31536000; includeSubDomains",
+    "x-content-type-options": "nosniff",
+    "x-ms-ests-server": "2.1.12231.8 - KRSLR1 ProdSlices",
+    "x-ms-request-id": "eb132921-6753-42e0-ab04-14c383f80300"
+   }
+  },
+  {
+   "method": "GET",
+   "url": "https://https%3A%2F%2Fendpoint/deviceupdate/sdkinstance/management/devicetags",
+   "query": {
+    "api-version": "2021-06-01-preview"
+   },
+   "requestBody": null,
+   "status": 200,
+   "response": "{\"value\":[{\"tagName\":\"joegroup\",\"deviceCount\":1}]}",
+   "responseHeaders": {
+    "content-length": "50",
+    "content-type": "application/json; charset=utf-8",
+    "date": "Thu, 18 Nov 2021 07:42:18 GMT",
+    "traceparent": "00-d10514b921d2394095255594862a3bc8-b10fc4910c34cb46-00"
+   }
+  }
+ ],
+ "uniqueTestInfo": {
+  "uniqueName": {},
+  "newDate": {}
+ },
+ "hash": "4e07bd9df093c4857dd7e2e129601ece"
+}
